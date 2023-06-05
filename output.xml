@@ -1,87 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.11.3 on win32)" generated="20230604 18:55:17.330" rpa="false" schemaversion="3">
-<suite id="s1" name="Tasks" source="C:\Users\chris\source\repos\Portfolio\ROBOT\robot-framework-organo-main_testes\tasks.robot">
-<test id="s1-t1" name="Abrir navegador e acessar o site organo" line="5">
+<robot generator="Robot 5.0.1 (Python 3.11.3 on win32)" generated="20230604 20:27:29.605" rpa="false" schemaversion="3">
+<suite id="s1" name="Preenchimento Incorreto" source="C:\Users\chris\source\repos\Portfolio\ROBOT\robot-framework-organo-main_testes\preenchimento_incorreto.robot">
+<test id="s1-t1" name="Verificar se quando um campo obrigatorio não for preenchido corretamente o sistema exibe uma mensagem de campo obrigatório" line="11">
+<kw name="Dado que eu acesse o Organo" library="setup_teardown" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>url=http://localhost:3000/</arg>
 <arg>browser=Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230604 18:55:17.634" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/'.</msg>
-<msg timestamp="20230604 18:55:17.669" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
-<status status="PASS" starttime="20230604 18:55:17.633" endtime="20230604 18:55:20.089"/>
+<msg timestamp="20230604 20:27:30.297" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/'.</msg>
+<msg timestamp="20230604 20:27:30.344" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230604 20:27:30.297" endtime="20230604 20:27:33.416"/>
 </kw>
-<status status="PASS" starttime="20230604 18:55:17.631" endtime="20230604 18:55:20.090"/>
-</test>
-<test id="s1-t2" name="Preencher os campos do formulario" line="8">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:form-nome</arg>
-<arg>Tiago</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:20.097" level="INFO">Typing text 'Tiago' into text field 'id:form-nome'.</msg>
-<status status="PASS" starttime="20230604 18:55:20.097" endtime="20230604 18:55:20.314"/>
+<status status="PASS" starttime="20230604 20:27:30.296" endtime="20230604 20:27:33.417"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:form-cargo</arg>
-<arg>Dev</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:20.316" level="INFO">Typing text 'Dev' into text field 'id:form-cargo'.</msg>
-<status status="PASS" starttime="20230604 18:55:20.314" endtime="20230604 18:55:20.475"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>id:form-imagem</arg>
-<arg>https://picsum.photos/200/300</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:20.477" level="INFO">Typing text 'https://picsum.photos/200/300' into text field 'id:form-imagem'.</msg>
-<status status="PASS" starttime="20230604 18:55:20.477" endtime="20230604 18:55:20.657"/>
-</kw>
+<kw name="Dado que eu clique no botão criar card">
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>class:lista-suspensa</arg>
+<arg>${CAMPO_CARD}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:20.659" level="INFO">Clicking element 'class:lista-suspensa'.</msg>
-<status status="PASS" starttime="20230604 18:55:20.658" endtime="20230604 18:55:20.744"/>
+<msg timestamp="20230604 20:27:33.419" level="INFO">Clicking element 'id:form-botao'.</msg>
+<status status="PASS" starttime="20230604 20:27:33.418" endtime="20230604 20:27:33.581"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//option[contains(.,'Programação')]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:20.746" level="INFO">Clicking element '//option[contains(.,'Programação')]'.</msg>
-<status status="PASS" starttime="20230604 18:55:20.745" endtime="20230604 18:55:20.803"/>
+<status status="PASS" starttime="20230604 20:27:33.418" endtime="20230604 20:27:33.581"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230604 18:55:30.804" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20230604 18:55:20.803" endtime="20230604 18:55:30.804"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>id:form-botao</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230604 18:55:30.807" level="INFO">Clicking element 'id:form-botao'.</msg>
-<status status="PASS" starttime="20230604 18:55:30.806" endtime="20230604 18:55:30.877"/>
+<kw name="Então sistema deve apresentar mensagem de campo obrigatorio">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:form-nome-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230604 20:27:33.666" level="INFO">Element 'id:form-nome-erro' is displayed.</msg>
+<status status="PASS" starttime="20230604 20:27:33.582" endtime="20230604 20:27:33.666"/>
 </kw>
 <kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>class:colaborador</arg>
+<arg>id:form-cargo-erro</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20230604 18:55:30.915" level="INFO">Element 'class:colaborador' is displayed.</msg>
-<status status="PASS" starttime="20230604 18:55:30.878" endtime="20230604 18:55:30.915"/>
+<msg timestamp="20230604 20:27:33.722" level="INFO">Element 'id:form-cargo-erro' is displayed.</msg>
+<status status="PASS" starttime="20230604 20:27:33.666" endtime="20230604 20:27:33.723"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230604 18:55:35.916" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20230604 18:55:30.915" endtime="20230604 18:55:35.916"/>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>id:form-times-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20230604 20:27:33.781" level="INFO">Element 'id:form-times-erro' is displayed.</msg>
+<status status="PASS" starttime="20230604 20:27:33.723" endtime="20230604 20:27:33.781"/>
 </kw>
-<status status="PASS" starttime="20230604 18:55:20.093" endtime="20230604 18:55:35.919"/>
+<status status="PASS" starttime="20230604 20:27:33.582" endtime="20230604 20:27:33.782"/>
+</kw>
+<kw name="Fechar o navegador" library="setup_teardown" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230604 20:27:33.783" endtime="20230604 20:27:36.271"/>
+</kw>
+<status status="PASS" starttime="20230604 20:27:33.783" endtime="20230604 20:27:36.272"/>
+</kw>
+<status status="PASS" starttime="20230604 20:27:30.293" endtime="20230604 20:27:36.272"/>
 </test>
-<status status="PASS" starttime="20230604 18:55:17.334" endtime="20230604 18:55:35.926"/>
+<status status="PASS" starttime="20230604 20:27:29.611" endtime="20230604 20:27:36.275"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Preenchimento Incorreto">Preenchimento Incorreto</stat>
 </suite>
 </statistics>
 <errors>

@@ -1,5 +1,7 @@
 *** Settings ***
 Library          SeleniumLibrary
+#Library        Faker Library
+
 Resource         setup_teardown.robot
 Test Setup       Dado que eu acesse o Organo
 Test Teardown    Fechar o navegador
@@ -22,10 +24,16 @@ ${OPCAO_INOVACAO}         //option[contains(.,'Inovação e Gestão')]
 
 *** Test Cases ***
 Verificar se ao preencher os campos do formulario os dados são inseridos na lista e se um novo card é criado no time esperado
-    
+    #BDD GIVEN WHEN THEN
+
     Dado que preencha os campos do formulario
     E clique no botão criar card
     Então identificar o card no time esperado
+
+Verificar se é possível criar mais de um card se preenchermos os campos corretamente
+    Dado que preencha os campos do formulario
+    E clique no botão criar card
+    Então identificar 3 card no time esperado
 
 
 *** Keywords ***
@@ -42,3 +50,10 @@ E clique no botão criar card
 
 Então identificar o card no time esperado
     Element Should Be Visible    class:colaborador
+
+Então identificar 3 card no time esperado
+    FOR    ${i}    IN RANGE    1    3    
+        Dado que preencha os campos do formulario
+        E clique no botão criar card        
+    END
+    Sleep    10s

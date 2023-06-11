@@ -1,6 +1,6 @@
 *** Settings ***
 Library          SeleniumLibrary
-#Library        Faker Library
+Library        Faker Library
 
 Resource         setup_teardown.robot
 Test Setup       Dado que eu acesse o Organo
